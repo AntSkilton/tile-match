@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Level_02
   m_EditorClassIdentifier: 
   LevelNumber: 2
-  Rows: 6
-  Columns: 6
+  RowColumnSquareGridCount: 5
+  TilesToPopTarget: 1
+  StartingMovesQuantity: 43
   TileColours:
   - {fileID: 0}
   - {fileID: 0}
