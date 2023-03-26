@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
@@ -14,7 +13,7 @@ public class LevelManager : MonoBehaviour
 	public TextMeshProUGUI MovesRemainingLabel;
 	
 	public GameObject TileGridContainer;
-	public GameObject TileSlot;
+	public GameObject TileSlotPrefab;
 	private Dictionary<Vector2, TileSlot> m_tileGrid = new Dictionary<Vector2, TileSlot>();
 
 	private void Awake() 
@@ -32,7 +31,7 @@ public class LevelManager : MonoBehaviour
 	private void OnEnable()
 	{
 		LoadLevelData();
-		// populate grid randomly
+		PopulateEmptySlots();
 	}
 
 	private void LoadLevelData()
@@ -52,11 +51,34 @@ public class LevelManager : MonoBehaviour
 		{
 			for (int j = 0; j < GameManager.Instance.CurrentLevel.RowColumnGridCount; j++)
 			{
-				var slotObj = Instantiate(TileSlot, TileGridContainer.transform);
+				var slotObj = Instantiate(TileSlotPrefab, TileGridContainer.transform);
 				var slot = slotObj.GetComponent<TileSlot>();
 				slot.Coordinates = new Vector2(i, j);
 				m_tileGrid.Add(slot.Coordinates, slot);
 			}
 		}
+	}
+
+	private void PopulateEmptySlots()
+	{
+		foreach (var slot in m_tileGrid)
+		{
+			if (slot.Value.TileItem == null)
+			{
+				var itemPrefab =
+					GameManager.Instance.CurrentLevel.TileItemPrefabs[
+						Random.Range(0, GameManager.Instance.CurrentLevel.TileItemPrefabs.Count)];
+
+				Instantiate(itemPrefab, slot.Value.gameObject.transform);
+				slot.Value.TileItem = itemPrefab.GetComponent<TileItem>();
+			}
+		}
+		
+	}
+
+	public void OnClickReturnToMenu()
+	{
+		SceneManager.LoadScene(sceneBuildIndex: 1, LoadSceneMode.Additive);
+		SceneManager.UnloadSceneAsync(sceneBuildIndex: 2);
 	}
 }

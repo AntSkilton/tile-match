@@ -16,7 +16,6 @@ MonoBehaviour:
   RowColumnGridCount: 3
   TilesToPopTarget: 3
   StartingMovesQuantity: 12
-  TileColours:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  TileItemPrefabs:
+  - {fileID: 107928159554425974, guid: 12941824b245f544f8be90996fab23e3, type: 3}
+  - {fileID: 5355555506229579435, guid: c73e02d1914d6c94f89519e77892e10a, type: 3}

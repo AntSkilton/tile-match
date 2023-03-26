@@ -1,12 +1,12 @@
-﻿using TMPro;
-using UnityEditor;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelSelectButton : MonoBehaviour
 {
 	public TextMeshProUGUI LevelLabel;
-	[HideInInspector] public GUID ReferencedLevelId;
+	public Guid ReferencedLevelId;
 	
 	public void OnClickLoadLevel()
 	{

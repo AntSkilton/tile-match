@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
 public class TileSlot : MonoBehaviour
 {
-	[FormerlySerializedAs("DebugCoordinates")] public Vector2 Coordinates;
+	[Tooltip("For debug purposes in the inspector. Dictionary key drives coordinate truth.")]
+	public Vector2 Coordinates;
+	public TileItem TileItem;
 }

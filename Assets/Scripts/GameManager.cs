@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
 		SceneManager.LoadScene(sceneBuildIndex: 1, LoadSceneMode.Additive);
 	}
 	
-	public void SetLevel(GUID referencedLevelId)
+	public void SetLevel(Guid referencedLevelId)
 	{
 		for (int i = 0; i < Instance.Levels.Count; i++)
 		{
