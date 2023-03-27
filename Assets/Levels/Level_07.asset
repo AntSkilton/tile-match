@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09286a5f299b4542ad6d418c78bfdc0d, type: 3}
-  m_Name: Level_03
+  m_Name: Level_07
   m_EditorClassIdentifier: 
-  LevelNumber: 3
-  RowColumnGridCount: 5
-  TilesToPopTarget: 12
-  StartingMovesQuantity: 4
+  LevelNumber: 7
+  RowColumnGridCount: 9
+  TilesToPopTarget: 20
+  StartingMovesQuantity: 6
   TileItemPrefabs:
   - {fileID: 107928159554425974, guid: 12941824b245f544f8be90996fab23e3, type: 3}
   - {fileID: 5355555506229579435, guid: c73e02d1914d6c94f89519e77892e10a, type: 3}
   - {fileID: 3630865568986861829, guid: c37aa2dd6c25c704cb5f1a3a02a458de, type: 3}
+  - {fileID: 8859669135115078596, guid: f84528606ddd2d849bae60eab24a6dc7, type: 3}
+  - {fileID: 8181114554203275347, guid: cfb54cd82d8d4314e99acfead363376b, type: 3}

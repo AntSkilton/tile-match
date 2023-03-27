@@ -7,6 +7,7 @@ public enum TileType
 	Red,
 	Green,
 	Yellow,
+	Black,
 }
 
 public class TileItem : MonoBehaviour

@@ -20,6 +20,9 @@ public class LevelManager : MonoBehaviour
 	private int m_movesRemaining;
 	private int m_tilesToPopRemaining;
 
+	public GameObject WinLosePopup;
+	public TextMeshProUGUI WinLoseTextLabel;
+
 	private void Awake() 
 	{ 
 		if (Instance != null && Instance != this) 
@@ -148,11 +151,50 @@ public class LevelManager : MonoBehaviour
 		foreach (var tileItem in tilesToPop)
 		{
 			m_tilesToPopRemaining--;
-			tileItem.PopTile();
+			//tileItem.PopTile();
+			Destroy(m_tileGrid[tileItem.ParentSlot.Coordinates].TileItem.gameObject);
+			m_tileGrid[tileItem.ParentSlot.Coordinates].TileItem = null;
 		}
 		
 		m_movesRemaining--;
+		CalculateWinLoseCondition();
 		UpdateHeaderView();
+		PopulateEmptyTiles();
+	}
+
+	private void CalculateWinLoseCondition()
+	{
+		if (m_tilesToPopRemaining < 1)
+		{
+			WinLosePopup.gameObject.SetActive(true);
+			WinLoseTextLabel.text = "You Win!";
+			return;
+		}
+
+		if (m_movesRemaining < 1)
+		{
+			WinLosePopup.SetActive(true);
+			WinLoseTextLabel.text = "You Lose :(";
+		}
+	}
+
+	private void PopulateEmptyTiles()
+	{
+		foreach (var slot in m_tileGrid)
+		{
+			if (slot.Value.TileItem != null) continue;
+			
+			// Inject a new prefab then attach it to the previously null slot
+			var itemPrefab =
+				GameManager.Instance.CurrentLevel.TileItemPrefabs[
+					Random.Range(0, GameManager.Instance.CurrentLevel.TileItemPrefabs.Count)];
+			
+			var obj = Instantiate(itemPrefab,  m_tileGrid[slot.Key].gameObject.transform);
+			var tileItem = obj.GetComponent<TileItem>();
+				
+			tileItem.SetSlot(slot.Value);
+			slot.Value.TileItem = tileItem;
+		}
 	}
 
 	private bool CanConsiderTile(Vector2 slotPosToCheck, Vector2 selectedTileSlot, List<TileItem> tilesToPop)
@@ -171,12 +213,12 @@ public class LevelManager : MonoBehaviour
 		return false;
 	}
 
-	private bool DoTilesMatch(TileSlot tilePosSource, TileSlot tilePosToCheck)
+	private static bool DoTilesMatch(TileSlot tilePosSource, TileSlot tilePosToCheck)
 	{
 		return tilePosSource.TileItem.TileType == tilePosToCheck.TileItem.TileType;
 	}
 
-	private bool DoesItemExistInList(List<TileItem> items, Vector2 coordinatesToCheck)
+	private static bool DoesItemExistInList(List<TileItem> items, Vector2 coordinatesToCheck)
 	{
 		foreach (var item in items)
 		{
@@ -189,7 +231,7 @@ public class LevelManager : MonoBehaviour
 		return false;
 	}
 
-	private bool IsSlotWithinBounds(Vector2 slotToCheck)
+	private static bool IsSlotWithinBounds(Vector2 slotToCheck)
 	{
 		if (slotToCheck.x >= 0 && slotToCheck.x <= GameManager.Instance.CurrentLevel.RowColumnGridCount -1)
 		{

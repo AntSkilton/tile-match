@@ -9,7 +9,7 @@ public class LevelData : ScriptableObject
 	
 	public int LevelNumber;
 
-	[Range(5,9)]
+	[Range(3,9)]
 	public int RowColumnGridCount = 5;
 	public int TilesToPopTarget;
 	public int StartingMovesQuantity;
