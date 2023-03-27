@@ -1,16 +1,16 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2297819044636841835
+--- !u!1001 &7481274597861476549
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1607042291945427877, guid: 9e8aa6a8ac644c04d96bd628e8756832, type: 3}
-      propertyPath: m_TargetGraphic
-      value: 
-      objectReference: {fileID: 8104971975539790391}
+    - target: {fileID: 3131966991404524935, guid: 9e8aa6a8ac644c04d96bd628e8756832, type: 3}
+      propertyPath: TileType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4094066635227123829, guid: 9e8aa6a8ac644c04d96bd628e8756832, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -57,22 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6174927002635033024, guid: 9e8aa6a8ac644c04d96bd628e8756832, type: 3}
       propertyPath: m_Name
-      value: tileItem_red
+      value: tileItem_green
       objectReference: {fileID: 0}
     - target: {fileID: 8041699604376274268, guid: 9e8aa6a8ac644c04d96bd628e8756832, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ea71aa2536998a14aa869b4ddc2db19b, type: 3}
+      objectReference: {fileID: 21300000, guid: da4fefc99352a444eb3c3b4dd445686b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e8aa6a8ac644c04d96bd628e8756832, type: 3}
---- !u!114 &8104971975539790391 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8041699604376274268, guid: 9e8aa6a8ac644c04d96bd628e8756832, type: 3}
-  m_PrefabInstance: {fileID: 2297819044636841835}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

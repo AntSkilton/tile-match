@@ -761,7 +761,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1764913639}
   m_Layer: 5
-  m_Name: dataHeader
+  m_Name: headerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
