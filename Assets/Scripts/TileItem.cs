@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public enum TileType
 {
@@ -13,8 +12,7 @@ public enum TileType
 public class TileItem : MonoBehaviour
 {
 	public TileType TileType;
-	public Image Sprite;
-	public Animation Animation;
+	public Animator Animator;
 
 	public TileSlot ParentSlot { get; private set; }
 
@@ -33,6 +31,6 @@ public class TileItem : MonoBehaviour
 
 	public void PopTile()
 	{
-		Animation.Play();
+		//Animator.Play("SmokePuff", 0);
 	}
 }

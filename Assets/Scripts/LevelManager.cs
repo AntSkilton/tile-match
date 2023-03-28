@@ -146,12 +146,19 @@ public class LevelManager : MonoBehaviour
 				}
 			}
 		}
+
+		// Dismiss orphaned tiles as legal moves.
+		if (tilesToPop.Count == 1)
+		{
+			return;
+		}
 		
 		// When no new neighbours found, pop all tiles
 		foreach (var tileItem in tilesToPop)
 		{
 			m_tilesToPopRemaining--;
 			//tileItem.PopTile();
+			
 			Destroy(m_tileGrid[tileItem.ParentSlot.Coordinates].TileItem.gameObject);
 			m_tileGrid[tileItem.ParentSlot.Coordinates].TileItem = null;
 		}
